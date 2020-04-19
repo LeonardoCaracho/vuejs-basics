@@ -48,6 +48,7 @@
 
 import { mapGetters, mapState, mapActions  } from 'vuex'
 import Datepicker from 'vuejs-datepicker';
+import NProgress from 'nprogress'
 
 export default {
     data(){
@@ -75,14 +76,15 @@ export default {
         ...mapActions(['createEvent']),
 
         submitCreateEvent(){
+            NProgress.start()
             this.createEvent(this.event).then(() => {
                 this.$router.push({
                     name: 'event-show',
                     params: { id: this.event.id }
                 })
                 this.event = this.createFreshEventObject()
-            }).catch(err => {
-                console.log(err)
+            }).catch(() => {
+              NProgress.done()
             })
         },
 

@@ -24,20 +24,12 @@
 
 <script>
 
-import { mapGetters } from 'vuex'
-
 export default {
-    props: ['id'],
-    data() {
-        return {}
-    },
-
-    created(){
-        this.$store.dispatch('fetchEvent', this.id)
-    },
-
-    computed: {
-        ...mapGetters(['event'])
+    props: {
+        event: {
+            type: Object,
+            required: true
+        }
     }
 }
 </script>

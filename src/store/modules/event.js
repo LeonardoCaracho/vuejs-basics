@@ -4,7 +4,8 @@ export const state = {
     categories: ['sustainability', 'nature', 'animal welfare', 'housing', 'education', 'food', 'community'],
     events: [],
     eventsTotal: 0,
-    event: {}
+    event: {},
+    perPage: 3
 }
 
 
@@ -28,7 +29,7 @@ export const mutations = {
 
 export const actions = {
     createEvent({ commit, dispatch }, event){
-        api.postEvent(event).then(() => {
+        return api.postEvent(event).then(() => {
             commit('ADD_EVENT', event)
 
             const notification = {
@@ -48,8 +49,8 @@ export const actions = {
         })
     },
 
-    fetchEvents({ commit, dispatch }, { perPage, page }){
-        api.getEvents(perPage, page)
+    fetchEvents({ state, commit, dispatch }, { page }){
+        api.getEvents(state.perPage, page)
         .then(res => {
             commit('SET_TOTAL_EVENTS', res.headers['x-total-count'])
             commit('SET_EVENTS', res.data)
@@ -64,23 +65,17 @@ export const actions = {
         })
     },
 
-    fetchEvent({ commit, getters, dispatch }, id){
+    fetchEvent({ commit, getters }, id){
         const event = getters.getEventById(id)
 
         if (event){
             commit('SET_EVENT', event)
+            return event
         } else {
-            api.getEvent(id)
+            return api.getEvent(id)
                 .then(res => {
                     commit('SET_EVENT', res.data)
-                })
-                .catch(err => {
-                    const notification = {
-                        type: 'error',
-                        message: 'There was a problem fetching event ' + err.message
-                    }
-        
-                    dispatch('notification/add', notification, { root: true })
+                    return res.data
                 })
         }
 
@@ -90,6 +85,7 @@ export const actions = {
 
 
 export const getters = {
+    perPage: state => state.perPage,
     catLength: state => state.categories.length,
     events: state => state.events,
     eventsTotal: state => state.eventsTotal,

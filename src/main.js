@@ -3,12 +3,13 @@ import App from './App.vue'
 
 import router from './router'
 import store from './store/store'
+import 'nprogress/nprogress.css'
 
 import BaseIcon from '@/components/BaseIcon'
 
 import '@/assets/styles/global.css'
 
-Vue.component('BaseIcon', BaseIcon)
+Vue.component('BaseIcon', BaseIcon) //global component
 
 Vue.config.productionTip = false
 
