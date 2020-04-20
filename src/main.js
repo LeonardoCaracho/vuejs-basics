@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import Vuelidate from 'vuelidate'
 
 import router from './router'
 import store from './store/store'
@@ -11,6 +12,8 @@ import BaseSelect from '@/components/BaseSelect'
 import BaseButton from '@/components/BaseButton'
 
 import '@/assets/styles/global.css'
+
+Vue.use(Vuelidate)
 
 Vue.component('BaseIcon', BaseIcon) //global component
 Vue.component('BaseInput', BaseInput) //global component
