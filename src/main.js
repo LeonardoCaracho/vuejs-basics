@@ -13,6 +13,9 @@ import BaseButton from '@/components/BaseButton'
 
 import '@/assets/styles/global.css'
 
+import DateFilter from '@/filters/date'
+
+Vue.filter('date', DateFilter)
 Vue.use(Vuelidate)
 
 Vue.component('BaseIcon', BaseIcon) //global component

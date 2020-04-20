@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="event-header">
-            <span class="eyebrow">@{{ event.time }} on {{ event.date }}</span>
+            <span class="eyebrow">@{{ event.time }} on {{ event.date | date }}</span>
             <h1 class="title">{{ event.title }}</h1>
             <h5>Organized by {{ event.organizer ? event.organizer.name : '' }}</h5>
             <h5>Category: {{ event.category }}</h5>
@@ -35,30 +35,30 @@ export default {
 </script>
 
 <style scoped>
-.location {
-    margin-bottom: 0;
-}
+    .location {
+        margin-bottom: 0;
+    }
 
-.location > .icon {
-    margin-left: 10px;
-}
+    .location > .icon {
+        margin-left: 10px;
+    }
 
-.event-header {
-    margin-top: 50px;
-}
+    .event-header {
+        margin-top: 50px;
+    }
 
-.event-header > .title {
-    margin: 0;
-}
+    .event-header > .title {
+        margin: 0;
+    }
 
-.list-group {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
+    .list-group {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
 
-.list-group > .list-item {
-    padding: 1em 0;
-    border-bottom: solid 1px #e5e5e5;
-}
+    .list-group > .list-item {
+        padding: 1em 0;
+        border-bottom: solid 1px #e5e5e5;
+    }
 </style>
