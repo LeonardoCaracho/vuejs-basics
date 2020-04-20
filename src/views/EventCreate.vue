@@ -176,6 +176,12 @@ export default {
 </script>
 
 <style scoped>
+
+.create-event {
+  width: 500px;
+  margin: auto;
+}
+
 .field {
     margin-bottom: 24px;
 }

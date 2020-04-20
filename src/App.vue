@@ -2,7 +2,7 @@
   <div id="app">
     <nav-bar />
     <notification-container />
-    <router-view :key="$route.fullPath" />
+    <router-view class="content" :key="$route.fullPath" />
   </div>
 </template>
 
@@ -18,4 +18,15 @@ export default {
   }
 }
 </script>
+
+<style>
+
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+</style>
 

@@ -1,21 +1,24 @@
 <template>
-  <div>
+  <div class="event-list">
     <h1>Events for {{ user.name }}</h1>
     <event-card 
       v-for="event in events" 
       :key="event.id" 
       :event="event"
     />
-    <template v-if="page != 1">
-      <router-link :to="{ name: 'event-list', query: { page: page - 1 } }" rel="prev">
-        Prev Page
-      </router-link>
-    </template>
-    <template v-if="eventsTotal > page * perPage">
-      <router-link :to="{ name: 'event-list', query: { page: page + 1 } }" rel="next">
-        Next Page
-      </router-link>
-    </template>
+
+    <div class="navigation">
+      <template v-if="page != 1">
+        <router-link :to="{ name: 'event-list', query: { page: page - 1 } }" rel="prev">
+          Prev Page
+        </router-link>
+      </template>
+      <template v-if="eventsTotal > page * perPage">
+        <router-link :to="{ name: 'event-list', query: { page: page + 1 } }" rel="next">
+          Next Page
+        </router-link>
+      </template>
+    </div>
   </div>
 </template>
 
@@ -64,3 +67,14 @@ export default {
 }
 </script>
 
+<style>
+  .event-list {
+    width: 500px;
+    margin: auto;
+  }
+
+  .navigation {
+    display: flex;
+    justify-content: space-between;
+  }
+</style>

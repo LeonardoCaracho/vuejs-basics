@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="event-show">
         <div class="event-header">
             <span class="eyebrow">@{{ event.time }} on {{ event.date | date }}</span>
             <h1 class="title">{{ event.title }}</h1>
@@ -60,5 +60,10 @@ export default {
     .list-group > .list-item {
         padding: 1em 0;
         border-bottom: solid 1px #e5e5e5;
+    }
+
+    .event-show {
+        width: 500px;
+        margin: auto;
     }
 </style>

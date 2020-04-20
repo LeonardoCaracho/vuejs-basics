@@ -3,9 +3,10 @@
       <router-link to="/" class="brand">Real World Events</router-link>
 
       <nav>
-        <router-link :to="{name: 'event-list'}">List</router-link>
-        <strong> | </strong>
-        <router-link :to="{name: 'event-create'}">Create</router-link>
+        <router-link style="padding-right: 10px;" :to="{name: 'event-create'}">New user</router-link>
+        <router-link style="padding-right: 10px;" :to="{name: 'event-list'}">List</router-link>
+        <router-link style="padding-right: 10px;" :to="{name: 'event-create'}">Create</router-link>
+        <router-link style="padding-right: 10px;" :to="{name: 'event-create'}">Logout</router-link>
       </nav>
   </div>
 </template>
@@ -17,9 +18,11 @@ export default {}
 <style scoped>
 .nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   height: 60px;
+  background: #F0F0F0;
+  width: 100%;
 }
 
 .nav > .brand {
